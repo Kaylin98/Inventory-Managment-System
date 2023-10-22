@@ -11,6 +11,7 @@ namespace IMS.UseCases.Interfaces
     {
         Task Add(Inventory inventory);
         Task Edit(Inventory inventory);
+        Task<Inventory> GetInventoryByIdAsync(int id);
         Task<IEnumerable<Inventory>> GetInventoryByNameAsync(string name);
     }
 }
