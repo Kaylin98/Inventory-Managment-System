@@ -37,6 +37,11 @@ namespace IMS.Plugins.InMemory
             
         }
 
+        public Task Edit(Inventory inventory)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<Inventory>> GetInventoryByNameAsync(string name)
         {
             if (string.IsNullOrEmpty(name)) return await Task.FromResult(inventories);
