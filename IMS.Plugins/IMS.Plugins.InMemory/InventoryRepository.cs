@@ -14,8 +14,8 @@ namespace IMS.Plugins.InMemory
 
         public InventoryRepository()
         {
-            inventories = new List<Inventory>() 
-            { 
+            inventories = new List<Inventory>()
+            {
                 new Inventory() {Id = 1, Name = "Bike seat", Quantity = 10, Price = 2 },
                 new Inventory() {Id = 1, Name = "Bike body", Quantity = 10, Price = 15 },
                 new Inventory() {Id = 1, Name = "Bike wheel", Quantity = 20, Price = 20 },
@@ -27,7 +27,7 @@ namespace IMS.Plugins.InMemory
         {
             if (string.IsNullOrEmpty(name)) return await Task.FromResult(inventories);
 
-            return inventories.Where(x => x.Name.Contains(name,StringComparison.OrdinalIgnoreCase));
+            return inventories.Where(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
         }
     }
 }
