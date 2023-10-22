@@ -1,5 +1,6 @@
 ﻿using IMS.CoreBusiness;
 using IMS.UseCases.Interfaces;
+using IMS.UseCases.Inventories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IMS.UseCases.Inventories
 {
-    public class ViewInventoriesByNameUseCase
+    public class ViewInventoriesByNameUseCase : IViewInventoriesByNameUseCase
     {
         private readonly IInventoryRepository inventoryRepository;
 
@@ -17,7 +18,7 @@ namespace IMS.UseCases.Inventories
             this.inventoryRepository = inventoryRepository;
         }
 
-        public async Task<IEnumerable<Inventory>> ExecuteAsync(string name ="")
+        public async Task<IEnumerable<Inventory>> ExecuteAsync(string name = "")
         {
             return await inventoryRepository.GetInventoryByNameAsync(name);
         }
