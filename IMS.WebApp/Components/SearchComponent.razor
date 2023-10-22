@@ -1,0 +1,29 @@
+﻿
+<div class="input-group">
+    <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Type here to search..." 
+        @bind-value="search"
+    />
+    <button class="btn-success input-group-text" 
+            type="button" 
+            @onclick="OnSearch">
+            Search
+    </button>
+</div>
+
+<br />
+
+@code {
+    private string search = string.Empty; 
+
+    [Parameter]
+    public EventCallback<string> OnSearchEvent { get; set; }
+
+    public void OnSearch()
+    {
+        OnSearchEvent.InvokeAsync(search);
+    }
+
+}

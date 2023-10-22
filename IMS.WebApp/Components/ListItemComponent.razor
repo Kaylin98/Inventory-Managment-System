@@ -1,0 +1,18 @@
+﻿@using IMS.CoreBusiness;
+@foreach (var item in inventories)
+{
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Quantity</td>
+        <td>@item.Price.ToString("c")</td>
+        <td>
+            <button type="button"
+                    class="btn btn-light"></button>
+        </td>
+    </tr>
+}
+
+@code {
+    [Parameter]
+    public List<Inventory> inventories { get; set; } = new List<Inventory>();
+}

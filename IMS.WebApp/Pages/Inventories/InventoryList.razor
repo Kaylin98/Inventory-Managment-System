@@ -1,0 +1,23 @@
+﻿@page "/inventories"
+
+
+<h3>Inventory List</h3>
+<br/>
+
+<SearchComponent 
+    OnSearchEvent="OnInventorySearch">
+</SearchComponent>
+
+<br />
+
+<ListComponent searchTerm="@searchTerm"></ListComponent>
+
+
+@code {
+    private string searchTerm = string.Empty;
+
+    public void OnInventorySearch(string searchTerm)
+    {
+        this.searchTerm = searchTerm;
+    }
+}
