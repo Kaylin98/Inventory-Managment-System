@@ -1,0 +1,32 @@
+﻿@using IMS.CoreBusiness;
+@using IMS.UseCases.Inventories.Interfaces;
+@inject IViewInventoriesByNameUseCase ViewInventoriesByNameUseCase
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <ListItemComponent inventories="inventories"></ListItemComponent>
+    </tbody>
+</table>
+
+
+@code {
+    private List<Inventory> inventories = new List<Inventory>();
+
+    [Parameter]
+    public string searchTerm { get; set; } = string.Empty;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        inventories = (await ViewInventoriesByNameUseCase.ExecuteAsync(this.searchTerm)).ToList();
+    }
+
+   
+}
