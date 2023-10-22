@@ -23,6 +23,20 @@ namespace IMS.Plugins.InMemory
             };
         }
 
+        public Task Add(Inventory inventory)
+        {
+            if (inventories.Any(x => x.Name.Equals(inventory.Name,StringComparison.OrdinalIgnoreCase))) 
+                return Task.CompletedTask;
+
+            var maxId = inventories.Max(x => x.Id);
+            inventory.Id = maxId + 1;
+
+            inventories.Add(inventory);
+
+            return Task.CompletedTask;
+            
+        }
+
         public async Task<IEnumerable<Inventory>> GetInventoryByNameAsync(string name)
         {
             if (string.IsNullOrEmpty(name)) return await Task.FromResult(inventories);
